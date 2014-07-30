@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title>Contact us</title>
+</head>
+<body>
+    <h1>Contact us</h1>
+
+    <!-- {% if error %}
+        <ul>
+            {% for err in error %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %} -->
+    {% if form.errors %}
+    	<p style="color:red;">
+    		please correct the error{{form.error|pluralize}} below.
+    	</p>
+    {% endif %}
+
+    <form action="" method="post">
+        <!-- <p>Subject: <input type="text" name="subject"></p>
+        <p>Your e-mail (optional): <input type="text" name="email"></p>
+        <p>Message: <textarea name="message" rows="10" cols="50"></textarea></p>
+        <input type="submit" value="Submit"> -->
+        <table>
+        	{{form.as_table}}
+        </table>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
