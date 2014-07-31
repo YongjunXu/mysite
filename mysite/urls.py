@@ -1,6 +1,6 @@
 from django.conf.urls import include, url
 from django.contrib import admin
-from mysite.views import current_datetime,display_meta
+from mysite.views import *
 from books.views import *
 
 urlpatterns = [
@@ -14,4 +14,6 @@ urlpatterns = [
     # url('^search-form/$',search_form),
     url('^search/$',search),
     url('^contact/$',contact),
+    url('^test/$',testform),#the first form
+    url('^test/test-next/$',testnext_form),#the second form
 ]
