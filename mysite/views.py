@@ -62,3 +62,20 @@ def testnext_form(request):
 		else:
 			next=TestnextForm(initial={'email':'test@example.com'})
 	return render(request,'test_next.html',{'form':next})
+def handle_uploaded_file(f):
+	with open('mysite/name.txt','wb+') as destination:
+		for chunk in f.chunks():
+			destination.write(chunk)
+def upload_file(request):
+	if request.method=='POST':
+		form=UploadFileForm(request.POST,request.FILES)
+		print form
+		print form.is_valid()
+		if form.is_valid():
+			handle_uploaded_file(request.FILES['file'])
+			return HttpResponseRedirect('/success/')
+	else:
+		form=UploadFileForm()
+	return render_to_response('upload.html',{'form':form})
+def upload_success(request):
+	return  HttpResponse('upload file success!')
